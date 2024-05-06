@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Push Notifications</title>
+</head>
+<body>
+  <h1>Desktop Notification</h1>
+
+  
+
+  <script>
+    if ("Notification" in window){
+      if ( Notification.permission=== 'granted') {
+        notify();
+      }else{
+        Notification.requestPermission().then((res)=>{
+          if(res === 'granted'){
+            notify();
+          }else if (res === 'denied'){
+            console.log("Notifications access denied");
+          }else if (res === 'default'){
+            console.log("Notifications permission not given");
+          }
+        })
+      }
+    }
+    else{
+      console.log("Notifications not supported");
+    }
+
+    function send(){
+      alert(
+      )
+    }
+
+    function notify(){
+      const notification = new Notification('Hello',{ 
+        body:`Hello Customer`,
+        vibrate: [200,100,200],
+      });
+
+      new Notification('Hello',{ 
+        body:`Join us on telegram`,
+        vibrate: [200,100,200],
+      });
+
+      new Notification('Hello',{ 
+        body:`Make deposit and withdraw today`,
+        vibrate: [200,100,200],
+      });
+
+      
+
+      notification.addEventListener('click', ()=>{
+        window.open('google.com');
+      });
+
+      setTimeout(()=>{
+      notification.close();
+
+      },5000)
+
+
+    }
+  </script>
+</body>
+</html>
